@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renovar Membresía - Netflix Clone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-netflix text-light fw-medium d-flex flex-column min-vh-100 border-top border-4 border-danger">
+
+  <!-- Header simple sin collapse para proceso de pago -->
+  <nav class="navbar navbar-expand-lg bg-black px-4 px-md-5 py-3 border-bottom border-dark">
+    <a class="navbar-brand text-danger fs-3 fw-bold m-0" href="index.html">NETFLIX</a>
+    <div class="ms-auto">
+        <a href="index.html" class="text-light-gray fw-bold text-decoration-none hover-underline fs-5">Cerrar sesión</a>
+    </div>
+  </nav>
+
+  <main class="flex-grow-1 d-flex justify-content-center align-items-center p-3 py-5">
+    
+    <div class="payment-box">
+      <!-- Banner Carrusel Autorrutativo SIN Controles -->
+      <div id="promoBanner" class="carousel slide banner-carousel shadow-sm" data-bs-ride="carousel" data-bs-interval="2500" data-bs-pause="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+             <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?w=600&h=180&fit=crop" alt="Premium 4K">
+             <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100 w-100 p-0" style="background: rgba(0,0,0,0.55); bottom: 0; left: 0; right: 0;">
+                <h3 class="fw-bold text-uppercase tracking-wide w-100 text-center m-0 text-shadow text-warning">
+                   <i class="fa-solid fa-bolt text-warning me-2"></i> Disfruta en 4K Ultra HD
+                </h3>
+             </div>
+          </div>
+          <div class="carousel-item">
+             <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=600&h=180&fit=crop" alt="Multiple devices">
+             <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100 w-100 p-0" style="background: rgba(0,0,0,0.55); bottom: 0; left: 0; right: 0;">
+                <h3 class="fw-bold text-uppercase tracking-wide w-100 text-center m-0 text-shadow text-white">
+                   <i class="fa-solid fa-mobile-screen me-2"></i> En todos tus dispositivos
+                </h3>
+             </div>
+          </div>
+          <div class="carousel-item">
+             <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86faa3?w=600&h=180&fit=crop" alt="Descargas">
+             <div class="carousel-caption d-flex flex-column justify-content-center align-items-center h-100 w-100 p-0" style="background: rgba(0,0,0,0.55); bottom: 0; left: 0; right: 0;">
+                <h3 class="fw-bold text-uppercase tracking-wide w-100 text-center m-0 text-shadow text-white">
+                   <i class="fa-solid fa-cloud-arrow-down me-2"></i> Descarga tus favoritos
+                </h3>
+             </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Contenido del checkout -->
+      <div class="p-4 p-md-5 bg-dark">
+        <h2 class="fs-3 fw-bold mb-1 text-center">Configura tu pago</h2>
+        <p class="text-center text-muted mb-4 small tracking-wide text-uppercase">Elige tu método favorito</p>
+
+        <!-- Selector de Medios de Pago Múltiples -->
+        <div class="d-flex gap-2 gap-md-3 mb-4 payment-method-selector">
+           <div class="w-100 position-relative">
+             <input type="radio" name="paymethod" id="cc" class="position-absolute opacity-0 input-method" checked>
+             <label for="cc" class="d-flex flex-column align-items-center justify-content-center p-3 rounded w-100 h-100 bg-black box-border gap-2">
+                 <i class="fa-regular fa-credit-card fs-4"></i>
+                 <span class="small fw-semibold mt-1">Tarjeta</span>
+             </label>
+           </div>
+           <div class="w-100 position-relative">
+             <input type="radio" name="paymethod" id="paypal" class="position-absolute opacity-0 input-method">
+             <label for="paypal" class="d-flex flex-column align-items-center justify-content-center p-3 rounded w-100 h-100 bg-black box-border gap-2">
+                 <i class="fa-brands fa-paypal fs-4"></i>
+                 <span class="small fw-semibold mt-1">PayPal</span>
+             </label>
+           </div>
+           <div class="w-100 position-relative">
+             <input type="radio" name="paymethod" id="crypto" class="position-absolute opacity-0 input-method">
+             <label for="crypto" class="d-flex flex-column align-items-center justify-content-center p-3 rounded w-100 h-100 bg-black box-border gap-2">
+                 <i class="fa-brands fa-bitcoin fs-4"></i>
+                 <span class="small fw-semibold mt-1">Crypto</span>
+             </label>
+           </div>
+           <div class="w-100 position-relative">
+             <input type="radio" name="paymethod" id="apple" class="position-absolute opacity-0 input-method">
+             <label for="apple" class="d-flex flex-column align-items-center justify-content-center p-3 rounded w-100 h-100 bg-black box-border gap-2">
+                 <i class="fa-brands fa-apple fs-4"></i>
+                 <span class="small fw-semibold mt-1">Apple</span>
+             </label>
+           </div>
+        </div>
+
+        <form action="index.html" class="mt-4" id="paymentForm">
+           
+           <!-- Interfaz de Tarjeta de Credito -->
+           <div id="formCard" class="payment-dynamic-form">
+               <div class="mb-3 position-relative">
+                 <span class="position-absolute top-50 translate-middle-y text-secondary ms-3"><i class="fa-solid fa-credit-card"></i></span>
+                 <input type="tel" id="cardNumber" class="form-control form-control-lg bg-black border-secondary text-white ps-5 input-focus-glow" placeholder="0000 0000 0000 0000" maxlength="19" required style="border-width: 1px;">
+               </div>
+               <div class="row g-3 mb-3">
+                 <div class="col-6">
+                    <input type="tel" id="cardExpiry" class="form-control form-control-lg bg-black border-secondary text-white input-focus-glow" placeholder="MM/AA" maxlength="5" required style="border-width: 1px;">
+                 </div>
+                 <div class="col-6 position-relative">
+                    <input type="tel" id="cardCVC" class="form-control form-control-lg bg-black border-secondary text-white pe-5 input-focus-glow" placeholder="CVV" maxlength="4" required style="border-width: 1px;">
+                    <span class="position-absolute top-50 translate-middle-y text-secondary" style="right: 25px;"><i class="fa-regular fa-circle-question" title="3 o 4 dígitos al reverso de tu tarjeta"></i></span>
+                 </div>
+               </div>
+               <div class="mb-4">
+                 <input type="text" id="cardName" class="form-control form-control-lg bg-black border-secondary text-white input-focus-glow" placeholder="Nombre completo del titular" maxlength="50" required style="border-width: 1px;">
+               </div>
+           </div>
+
+           <!-- Interfaz de PayPal -->
+           <div id="formPaypal" class="payment-dynamic-form d-none">
+               <p class="text-white mb-2 fw-semibold">Vincula tu cuenta de PayPal para cobro automático</p>
+               <div class="mb-4 position-relative">
+                 <span class="position-absolute top-50 translate-middle-y text-secondary ms-3"><i class="fa-solid fa-envelope"></i></span>
+                 <input type="email" id="paypalEmail" class="form-control form-control-lg bg-black border-secondary text-white ps-5 input-focus-glow" placeholder="Correo electrónico de PayPal" style="border-width: 1px;">
+               </div>
+           </div>
+
+           <!-- Interfaz Crypto -->
+           <div id="formCrypto" class="payment-dynamic-form d-none">
+               <p class="text-warning mb-2 fw-semibold"><i class="fa-brands fa-bitcoin me-2"></i>Pago Descentralizado</p>
+               <p class="text-secondary small mb-3">Seleccione la red de la criptomoneda deseada y transfiera del saldo a la dirección temporal.</p>
+               <select id="cryptoNetwork" class="form-select form-select-lg bg-black border-secondary text-white input-focus-glow mb-4" style="border-width: 1px;">
+                   <option value="btc">Bitcoin (BTC)</option>
+                   <option value="erc20">Ethereum (ERC-20)</option>
+                   <option value="trc20">Tether (USDT - TRC20)</option>
+               </select>
+           </div>
+           
+           <!-- Interfaz Apple -->
+           <div id="formApple" class="payment-dynamic-form d-none text-center py-3 mb-3">
+               <i class="fa-brands fa-apple fs-1 text-white mb-2"></i>
+               <p class="text-white fw-semibold mb-0" style="font-size: 0.95rem;">Se le pedirá interactuar con el Face ID o Touch ID de su dispositivo para autorizar la transacción de Apple Pay.</p>
+           </div>
+           
+           <button type="submit" id="btnSubmit" class="btn btn-danger w-100 py-3 fw-bold fs-4 shadow-sm btn-hover-scale d-flex align-items-center justify-content-center gap-3">
+             Iniciar Membresía 
+             <i class="fa-solid fa-chevron-right fs-5"></i>
+           </button>
+        </form>
+
+        <div class="text-center mt-4 border-top border-secondary pt-3">
+            <span class="text-secondary opacity-75" style="font-size: 0.8rem;">
+               <i class="fa-solid fa-lock text-success me-1"></i> Protegido con encriptación de grado bancario (AES-256)
+            </span>
+        </div>
+      </div>
+    </div>
+    
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

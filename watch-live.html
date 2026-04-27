@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emisión en Vivo - Netflix Clone</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body { margin: 0; overflow: hidden; background-color: #000; color: #fff; font-family: 'Helvetica Neue', Arial, sans-serif; display: flex; height: 100vh;}
+    
+    /* Layout */
+    .video-section { flex-grow: 1; position: relative; background: #000; }
+    .chat-section { width: 350px; background-color: #121212; border-left: 1px solid #333; display: flex; flex-direction: column; }
+    
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .chat-section { width: 100%; height: 35vh; border-left: none; border-top: 1px solid #333; }
+      .video-section { height: 65vh; }
+    }
+
+    video { width: 100%; height: 100%; object-fit: contain; }
+    
+    /* Overlay UI */
+    .overlay { transition: opacity 0.3s ease; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.7) 100%); pointer-events: none; z-index: 10; display: flex; flex-direction: column; justify-content: space-between; }
+    .video-section:hover .overlay { opacity: 1; }
+    .overlay-top, .overlay-bottom { pointer-events: auto; padding: 20px 30px; }
+    
+    .back-btn { font-size: 1.8rem; color: #fff; text-decoration: none; transition: transform 0.2s; }
+    .back-btn:hover { transform: scale(1.1); color: #fff; }
+    .title-text { font-size: 1.3rem; font-weight: bold; margin-left: 15px; }
+    
+    /* Live Badge Pulses */
+    .live-indicator { animation: pulse 1.5s infinite ease-in-out; background-color: #e50914; padding: 4px 10px; border-radius: 4px; font-weight: bold; letter-spacing: 1px; font-size: 0.8rem;}
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+    /* Controls */
+    .controls-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; transition: transform 0.1s; display: flex; align-items: center; gap: 10px; }
+    .controls-btn:hover { transform: scale(1.1); }
+    
+    /* Chat UI */
+    .chat-header { padding: 15px; border-bottom: 1px solid #222; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; text-align: center; }
+    .chat-messages { flex-grow: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px; }
+    .msg { display: flex; gap: 10px; }
+    .msg-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; background: #333;}
+    .msg-content { background: #222; padding: 10px 15px; border-radius: 12px; border-top-left-radius: 2px; font-size: 0.9rem; }
+    .msg-name { font-weight: bold; color: #ccc; font-size: 0.8rem; margin-bottom: 3px;}
+    
+    .chat-input { padding: 15px; border-top: 1px solid #222; background: #121212; display: flex; gap: 10px; }
+    .chat-input input { flex-grow: 1; background: #333; border: none; color: white; padding: 10px 15px; border-radius: 20px; outline: none; }
+    .chat-input button { background: #e50914; color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;}
+  </style>
+</head>
+<body>
+
+  <div class="video-section" id="videoContainer">
+    <video id="player" autoplay loop muted controlsList="nodownload">
+      <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+    </video>
+
+    <div class="overlay" id="overlayUI">
+      <div class="overlay-top d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+            <a href="javascript:history.back()" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+            <div class="title-text">Sabrina Carpenter: Live from LA</div>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <div class="live-indicator"><i class="fa-solid fa-satellite-dish me-1"></i> EN VIVO</div>
+            <div class="bg-dark bg-opacity-75 px-3 py-1 rounded-pill fs-6 border border-secondary"><i class="fa-regular fa-eye text-danger me-2"></i> 2.4M</div>
+        </div>
+      </div>
+      
+      <div class="overlay-bottom d-flex align-items-center justify-content-between">
+        <div class="d-flex gap-4">
+            <button class="controls-btn text-danger fw-bold" id="playPause"><i class="fa-solid fa-pause"></i> En Directo</button>
+            <button class="controls-btn"><i class="fa-solid fa-volume-xmark" id="muteIcon"></i></button>
+        </div>
+        <div class="d-flex gap-4">
+            <button class="controls-btn"><i class="fa-solid fa-closed-captioning"></i></button>
+            <button class="controls-btn" id="fullscreen"><i class="fa-solid fa-expand"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-section">
+      <div class="chat-header text-muted">
+         Chat en vivo de la transmisión
+      </div>
+      <div class="chat-messages scroll-hidden" id="chatBox">
+         <div class="msg">
+             <img src="https://loremflickr.com/100/100/girl?lock=1" class="msg-avatar">
+             <div class="msg-content"><div class="msg-name">Andrea M.</div>¡Dios mio, no puedo esperar a que cante Espresso! ❤️</div>
+         </div>
+         <div class="msg">
+             <img src="https://loremflickr.com/100/100/boy?lock=2" class="msg-avatar">
+             <div class="msg-content"><div class="msg-name">Carlos_99</div>El sonido es espectacular, el mejor tour del año sin duda alguna 🔥</div>
+         </div>
+         <div class="msg">
+             <img src="https://loremflickr.com/100/100/dog?lock=3" class="msg-avatar">
+             <div class="msg-content"><div class="msg-name">Luisinho</div>BRAVOOOO 👏👏</div>
+         </div>
+      </div>
+      <div class="chat-input">
+          <input type="text" placeholder="Únete a la conversación..." disabled>
+          <button disabled><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+  </div>
+
+  <script>
+    const video = document.getElementById('player');
+    const playPauseBtn = document.getElementById('playPause');
+    const fullscreenBtn = document.getElementById('fullscreen');
+    const muteIcon = document.getElementById('muteIcon');
+
+    // Desmutear al hacer click (Políticas de navegadores prohíben autoplay con sonido)
+    video.addEventListener('click', () => {
+        video.muted = !video.muted;
+        muteIcon.className = video.muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+    });
+
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i> En Directo';
+      } else {
+        video.pause();
+        playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i> En Directo';
+      }
+    });
+
+    fullscreenBtn.addEventListener('click', () => {
+      const container = document.getElementById('videoContainer');
+      if (!document.fullscreenElement) {
+        container.requestFullscreen();
+        fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i>';
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+          fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand"></i>';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

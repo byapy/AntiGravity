@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Netflix Clone</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome para Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <!-- CSS Personalizado -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-netflix text-light fw-medium">
+
+  <!-- Header / Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top transition-navbar" id="mainNav">
+    <div class="container-fluid px-4 px-md-5">
+      <a class="navbar-brand text-danger fs-3 fw-bold" href="#">NETFLIX</a>
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="text-white"><i class="fa-solid fa-bars fs-4"></i></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white fw-bold" aria-current="page" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light-gray" href="categories.html">Series</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light-gray" href="categories.html">Películas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light-gray" href="novedades.html">Novedades populares</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light-gray" href="#">Mi lista</a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="nav-link text-warning fw-bold d-flex align-items-center gap-2 border border-warning rounded px-3 transition-transform btn-hover-scale" style="background-color: rgba(255, 193, 7, 0.1);" href="pagos.html">
+               <i class="fa-solid fa-crown"></i>  Renovar VIP
+            </a>
+          </li>
+        </ul>
+        
+        <div class="d-flex align-items-center gap-3">
+          <a href="#" class="text-white text-decoration-none"><i class="fa-solid fa-magnifying-glass fs-5"></i></a>
+          <a href="#" class="text-white text-decoration-none d-none d-lg-block">Niños</a>
+          <a href="#" class="text-white text-decoration-none"><i class="fa-regular fa-bell fs-5"></i></a>
+          <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownProfile" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Profile" width="32" height="32" class="rounded">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end mt-2 rounded-1 border-0 bg-dark-gray shadow" aria-labelledby="dropdownProfile">
+              <li><a class="dropdown-item" href="profile.html">Administrar perfiles</a></li>
+              <li><hr class="dropdown-divider border-secondary"></li>
+              <li><a class="dropdown-item" href="#">Cuenta</a></li>
+              <li><a class="dropdown-item" href="#">Centro de ayuda</a></li>
+              <li><a class="dropdown-item" href="#">Cerrar sesión en Netflix</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Fullscreen Hero Carousel -->
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false">
+    <div class="carousel-inner h-100">
+      
+      <!-- Slide 1 -->
+      <div class="carousel-item active h-100" data-bs-interval="6000">
+        <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop');"></div>
+        <div class="hero-vignette"></div>
+        <div class="carousel-caption text-start hero-caption px-4 px-md-5 pb-5">
+          <h1 class="display-3 fw-bold text-shadow hero-title">Stranger World</h1>
+          <p class="fs-5 d-none d-md-block content-desc text-shadow">Un grupo de amigos se adentra en un misterio impresionante que involucra experimentos secretos, fuerzas sobrenaturales y una pequeña caja.</p>
+          <div class="d-flex gap-3 mt-4">
+            <button class="btn btn-light text-dark fw-bold px-4 py-2 fs-5 d-flex align-items-center gap-2 btn-hover-scale"><i class="fa-solid fa-play"></i> Reproducir</button>
+            <button class="btn btn-secondary-translucent text-white fw-bold px-4 py-2 fs-5 d-flex align-items-center gap-2 btn-hover-scale"><i class="fa-solid fa-circle-info"></i> Más información</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item h-100" data-bs-interval="6000">
+        <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=2094&auto=format&fit=crop');"></div>
+        <div class="hero-vignette"></div>
+        <div class="carousel-caption text-start hero-caption px-4 px-md-5 pb-5">
+          <h1 class="display-3 fw-bold text-shadow hero-title">El Cosmos Infinito</h1>
+          <p class="fs-5 d-none d-md-block content-desc text-shadow">Acompaña a esta tripulación en un viaje visualmente asombroso a través de las estrellas y los planetas más peligrosos del universo conocido.</p>
+          <div class="d-flex gap-3 mt-4">
+            <button class="btn btn-light text-dark fw-bold px-4 py-2 fs-5 d-flex align-items-center gap-2 btn-hover-scale"><i class="fa-solid fa-play"></i> Reproducir</button>
+            <button class="btn btn-secondary-translucent text-white fw-bold px-4 py-2 fs-5 d-flex align-items-center gap-2 btn-hover-scale"><i class="fa-solid fa-circle-info"></i> Más información</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- Carousel Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon d-none" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon d-none" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <!-- Main Content Feeds (Carousels) -->
+  <main class="content-sections pb-5">
+    
+    <!-- Feed 1: Tendencias -->
+    <section class="slider-section mt-4 position-relative slider-wrapper px-0 px-md-4">
+      <h3 class="slider-title mb-3 px-4 px-md-1">Tendencias ahora</h3>
+      <button class="slider-btn btn-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="slider-container d-flex flex-nowrap overflow-auto gap-2 gap-md-3 scroll-hidden py-4 px-4 px-md-1">
+        
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/matrix,movie/all?lock=1" class="w-100 h-100 object-fit-cover" alt="The Matrix">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">The Matrix</span>
+          </div>
+        </div>
+        
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/batman,movie/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Batman">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Batman Begins</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/gladiator,movie/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Gladiator">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Gladiator</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/starwars,movie/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Star Wars">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Star Wars</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/inception,movie/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Inception">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Inception</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/shrek,movie/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Shrek">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Shrek</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/avatar,movie/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Avatar">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Avatar</span>
+          </div>
+        </div>
+
+      </div>
+      <button class="slider-btn btn-next" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+    </section>
+
+    <!-- Feed 2: Series Internacionales -->
+    <section class="slider-section mt-1 position-relative slider-wrapper px-0 px-md-4">
+      <h3 class="slider-title mb-3 px-4 px-md-1">Series Internacionales</h3>
+      <button class="slider-btn btn-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="slider-container d-flex flex-nowrap overflow-auto gap-2 gap-md-3 scroll-hidden py-4 px-4 px-md-1">
+        
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/breakingbad,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Breaking Bad">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Breaking Bad</span>
+          </div>
+        </div>
+        
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/strangerthings,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Stranger Things">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Stranger Things</span>
+          </div>
+        </div>
+        
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/gameofthrones,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Game of Thrones">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Game of Thrones</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/peakyblinders,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Peaky Blinders">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Peaky Blinders</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/squidgame,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Squid Game">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Squid Game</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/moneyheist,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Money Heist">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Money Heist</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/dark,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Dark">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Dark</span>
+          </div>
+        </div>
+
+      </div>
+      <button class="slider-btn btn-next" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+    </section>
+
+    <!-- Feed 3: Comedias -->
+    <section class="slider-section mt-1 position-relative slider-wrapper px-0 px-md-4">
+      <h3 class="slider-title mb-3 px-4 px-md-1">Comedias</h3>
+      <button class="slider-btn btn-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="slider-container d-flex flex-nowrap overflow-auto gap-2 gap-md-3 scroll-hidden py-4 px-4 px-md-1">
+        
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/theoffice,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="The Office">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">The Office</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/friends,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Friends">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Friends</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/simpsons,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="The Simpsons">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">The Simpsons</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/mrbean,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Mr Bean">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Mr Bean</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/seinfeld,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Seinfeld">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Seinfeld</span>
+          </div>
+        </div>
+
+        <div class="slider-item slider-item-hover position-relative rounded overflow-hidden shadow border border-secondary border-opacity-25">
+          <img src="https://loremflickr.com/400/225/brooklyn99,tv/all?lock=1" class="w-100 h-100 object-fit-cover" alt="Brooklyn 99">
+          <div class="position-absolute bottom-0 start-0 w-100 p-2 pt-4 bg-gradient-to-t-small">
+            <span class="text-white fw-bold fs-6 text-shadow">Brooklyn 99</span>
+          </div>
+        </div>
+        
+      </div>
+      <button class="slider-btn btn-next" aria-label="Siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+    </section>
+
+    <!-- Conciertos y Emisiones en Vivo -->
+    <section class="live-events-section mt-5 px-4 px-md-5 pt-3">
+      <h3 class="slider-title mb-4">Conciertos y Emisiones en Vivo</h3>
+      <div class="d-flex flex-column gap-5">
+        
+        <!-- Sabrina Carpenter -->
+        <div class="card bg-dark text-white border-0 position-relative rounded overflow-hidden shadow-lg live-event-card">
+          <img src="https://loremflickr.com/1600/600/concert,singer/all?lock=10" class="card-img" alt="Sabrina Carpenter Live" style="height: 450px; object-fit: cover; opacity: 0.85;">
+          <div class="card-img-overlay d-flex flex-column justify-content-end p-4 p-md-5 bg-gradient-to-t">
+            <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
+              <span class="badge bg-danger text-uppercase live-badge fw-bold py-2 px-3 border border-danger"><i class="fa-solid fa-satellite-dish me-2"></i> En Vivo</span>
+              <span class="text-light fw-bold mx-1">|</span>
+              <img src="" alt="Bandera" class="rounded-1 flag-icon" style="width: 24px; height: 18px; object-fit:cover; display:none;">
+              <span class="fw-bold time-converted bg-black bg-opacity-60 px-2 py-1 rounded" data-utc="2026-04-18T20:00:00Z">Cargando horario...</span>
+            </div>
+            <h2 class="card-title display-4 fw-bold text-shadow mb-3">Sabrina Carpenter: Live from LA</h2>
+            <p class="card-text fs-5 text-shadow w-75 d-none d-md-block mb-4">La superestrella toma el escenario principal en una noche inolvidable. Únete a la transmisión mundial ahora mismo y vive la experiencia en primera fila.</p>
+            <div class="d-flex gap-3">
+              <button class="btn btn-light text-dark fw-bold px-4 py-2 fs-5"><i class="fa-solid fa-play me-2"></i> Ver ahora</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drake -->
+        <div class="card bg-dark text-white border-0 position-relative rounded overflow-hidden shadow-lg live-event-card mb-4">
+          <img src="https://loremflickr.com/1600/600/rapper,concert/all?lock=20" class="card-img" alt="Drake Live" style="height: 450px; object-fit: cover; opacity: 0.85;">
+          <div class="card-img-overlay d-flex flex-column justify-content-end p-4 p-md-5 bg-gradient-to-t">
+            <div class="d-flex align-items-center flex-wrap gap-2 mb-3">
+              <span class="badge bg-secondary text-uppercase fw-bold py-2 px-3 border border-secondary"><i class="fa-regular fa-calendar-check me-2"></i> Próximamente</span>
+              <span class="text-light fw-bold mx-1">|</span>
+              <img src="" alt="Bandera" class="rounded-1 flag-icon" style="width: 24px; height: 18px; object-fit:cover; display:none;">
+              <span class="fw-bold time-converted bg-black bg-opacity-60 px-2 py-1 rounded" data-utc="2026-05-10T01:00:00Z">Cargando horario...</span>
+            </div>
+            <h2 class="card-title display-4 fw-bold text-shadow mb-3">Drake: The Return Tour</h2>
+            <p class="card-text fs-5 text-shadow w-75 d-none d-md-block mb-4">El anticipado regreso del ícono global a los escenarios. Marca tu calendario y sé de los primeros en presenciar el evento del año.</p>
+            <div class="d-flex gap-3">
+              <button class="btn btn-secondary-translucent text-white fw-bold px-4 py-2 fs-5"><i class="fa-regular fa-bell me-2"></i> Recordarme</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-secondary py-5 mt-5 px-4 px-md-5 mx-auto" style="max-width: 1000px;">
+    <div class="d-flex gap-4 mb-3 fs-3">
+      <a href="#" class="text-secondary text-decoration-none"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="text-secondary text-decoration-none"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="text-secondary text-decoration-none"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" class="text-secondary text-decoration-none"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+    <div class="row row-cols-2 row-cols-md-4 g-3 mb-4 text-sm">
+      <div class="col"><a href="#" class="text-secondary text-decoration-none hover-underline">Traducción de audio</a></div>
+      <div class="col"><a href="#" class="text-secondary text-decoration-none hover-underline">Centro de ayuda</a></div>
+      <div class="col"><a href="#" class="text-secondary text-decoration-none hover-underline">Privacidad</a></div>
+      <div class="col"><a href="#" class="text-secondary text-decoration-none hover-underline">Contáctanos</a></div>
+      <div class="col"><a href="#" class="text-secondary text-decoration-none hover-underline">Audiodescripción</a></div>
+      <div class="col"><a href="#" class="text-secondary text-decoration-none hover-underline">Relaciones con inversionistas</a></div>
+      <div class="col"><a href="#" class="text-secondary text-decoration-none hover-underline">Avisos legales</a></div>
+    </div>
+    <button class="btn btn-outline-secondary mb-4 btn-sm">Código de servicio</button>
+    <p class="small">&copy; 1997-2024 Netflix, Inc.</p>
+  </footer>
+
+  <!-- Bootstrap JS (With Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="app.js"></script>
+</body>
+</html>

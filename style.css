@@ -1,0 +1,363 @@
+/* Netflix Clone Custom CSS */
+
+/* Color Variables */
+:root {
+  --netflix-red: #E50914;
+  --netflix-black: #141414;
+  --netflix-dark-gray: #181818;
+  --netflix-light-gray: #e5e5e5;
+  --netflix-secondary-translucent: rgba(109, 109, 110, 0.7);
+}
+
+/* Base Styles */
+body.bg-netflix {
+  background-color: var(--netflix-black);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.text-light-gray {
+  color: var(--netflix-light-gray) !important;
+}
+
+.text-light-gray:hover {
+  color: #b3b3b3 !important;
+}
+
+.bg-black {
+  background-color: #000000 !important;
+}
+
+.bg-dark-gray {
+  background-color: var(--netflix-dark-gray);
+}
+
+/* Navbar */
+.transition-navbar {
+  transition: background-color 0.4s ease;
+  background-color: transparent; /* Transparent at top */
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
+}
+
+.navbar-brand {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+/* Hero Carousel */
+#heroCarousel {
+  height: 100vh;
+  min-height: 500px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center top;
+}
+
+.hero-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Top to bottom and left to right gradients to simulate the vignettes */
+  background: linear-gradient(to right, #141414 0%, rgba(0,0,0,0) 40%),
+              linear-gradient(to top, #141414 0%, rgba(0,0,0,0) 30%),
+              linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 25%);
+}
+
+.hero-caption {
+  bottom: 10% !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  max-width: 600px;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 5rem;
+  }
+}
+
+.content-desc {
+  max-width: 600px;
+  line-height: 1.4;
+  font-size: 1.2rem;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+/* Buttons */
+.btn-secondary-translucent {
+  background-color: var(--netflix-secondary-translucent);
+  border: none;
+}
+
+.btn-secondary-translucent:hover {
+  background-color: rgba(109, 109, 110, 0.5);
+  color: white;
+}
+
+.btn-hover-scale {
+  transition: transform 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-hover-scale:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+/* Slider Section */
+.content-sections {
+  margin-top: -100px;
+  position: relative;
+  z-index: 20;
+}
+
+.slider-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Hide scrollbar for slider container */
+.scroll-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scroll-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  scroll-behavior: smooth;
+}
+
+.slider-item {
+  flex: 0 0 auto; /* Prevent growing/shrinking */
+  width: 250px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.4s ease;
+}
+
+@media (min-width: 768px) {
+  .slider-item {
+    width: 300px;
+  }
+}
+
+.slider-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.slider-item-hover:hover {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+/* Effect to push siblings away slightly on hover (optional advanced effect) - we'll keep it simple for now, standard scale works well */
+
+/* Footer */
+.hover-underline:hover {
+  text-decoration: underline !important;
+}
+
+.text-sm {
+  font-size: 13px;
+}
+
+/* Elegantes y minimalistas Botones de Carrusel */
+.slider-wrapper {
+  position: relative;
+}
+
+.slider-wrapper:hover .slider-btn {
+  opacity: 1; /* Mostrar al hacer hover */
+}
+
+@media (max-width: 767px) {
+  .slider-btn {
+    opacity: 1 !important; /* Siempre visible en móviles para mejor UX */
+  }
+}
+
+.slider-btn {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  z-index: 30;
+  background-color: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(4px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.slider-btn:hover {
+  background-color: white;
+  color: var(--netflix-black);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.btn-prev {
+  left: 20px;
+}
+
+.btn-next {
+  right: 20px;
+}
+
+/* Profiles Page */
+.profile-card {
+  width: 150px;
+  transition: transform 0.2s;
+}
+
+.profile-card:hover .profile-icon {
+  border-color: white !important;
+}
+
+.profile-card:hover .profile-name {
+  color: white !important;
+}
+
+.transition-transform {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.profile-name {
+  transition: color 0.2s ease;
+  margin-top: 10px;
+}
+
+.manage-btn {
+  border-color: gray;
+  background: transparent;
+  color: gray !important;
+}
+
+.manage-btn:hover {
+  color: white !important;
+  border-color: white;
+  background: transparent;
+}
+
+/* Utilities */
+.tracking-wide {
+  letter-spacing: 2px;
+}
+
+.drop-shadow {
+  filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.8));
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.drop-shadow:hover {
+  transform: scale(1.1);
+  color: white !important;
+}
+
+.grid-movies .slider-item-hover {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* Override dark mode on bootstrap badges */
+.text-bg-dark {
+  background-color: #333 !important;
+}
+
+/* Eventos en vivo y conciertos */
+.bg-gradient-to-t {
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+}
+
+.bg-gradient-to-t-small {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
+}
+
+.live-badge .fa-satellite-dish {
+  animation: blink-soft 1.5s ease-in-out infinite;
+}
+
+@keyframes blink-soft {
+  0% { opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.8); }
+  50% { opacity: 0.3; text-shadow: 0 0 0px rgba(255,255,255,0); }
+  100% { opacity: 1; text-shadow: 0 0 8px rgba(255,255,255,0.8); }
+}
+
+.live-event-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.live-event-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
+}
+
+/* Payment Page Config */
+.payment-box {
+  max-width: 550px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden; /* Encapsulate the banner to not break border-radius */
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+  border: 1px solid #333;
+}
+
+.banner-carousel .carousel-item {
+  height: 160px;
+}
+.banner-carousel img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.payment-method-selector label {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  color: #999;
+}
+
+.payment-method-selector .input-method:checked + label {
+  border-color: #E50914;
+  color: white;
+  background-color: rgba(229, 9, 20, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+.payment-method-selector label:hover {
+  color: white;
+  border-color: #555;
+}
